@@ -1,0 +1,35 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    {% csrf_token %}
+    <body style="background-image: url({% static 'img/library.jpg' %});">
+        <div class="buttons-nav">
+            <div class="buttons-nav-links">
+                <button onclick="window.location.href = '/admins/libros/'" class="button-link">Libros</button>
+                <button onclick="window.location.href = '/admins/autores/'" class="button-link" >Autores</button>
+                <button onclick="window.location.href = '/admins/temas/'" class="button-link">Temas</button>
+                <button onclick="window.location.href = '/admins/usuarios/'" class="button-link">Usuarios</button>
+                <button onclick="window.location.href = '/admins/bibliotecas/'" class="button-link">Bibliotecas</button>
+                <button onclick="window.location.href = '/admins/prestamos/'" class="button-link">Prestamos</button>
+                <button class="button-link" id="btn_logout">Salir</button>
+            </div>
+        </div>
+        <div class="list-block-header">
+            <h1>Usuarios</h1>
+        </div>
+        <div class="list-block">
+            <table border="1" id="tbl_tabla_libros">
+
+            </table>
+        </div>
+        <div class="list-block-footer">
+
+        </div>
+        </div>
+        <script type="text/javascript" src="{% static 'bin/jquery-3.3.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'admins/usuarios.js' %}"></script>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script type="text/javascript" src="{% static 'bin/jquery-3.3.1.min.js' %}"></script>
+</head>
+<body style="background-image: url({% static 'img/library.jpg' %});">
+        <div class="buttons-nav">
+                <div class="buttons-nav-links">
+                    <button onclick="window.location.href = '/admins/libros/'" class="button-link">Libros</button>
+                <button onclick="window.location.href = '/admins/autores/'" class="button-link" >Autores</button>
+                <button onclick="window.location.href = '/admins/temas/'" class="button-link">Temas</button>
+                <button onclick="window.location.href = '/admins/usuarios/'" class="button-link">Usuarios</button>
+                <button onclick="window.location.href = '/admins/bibliotecas/'" class="button-link">Bibliotecas</button>
+                <button onclick="window.location.href = '/admins/prestamos/'" class="button-link">Prestamos</button>
+                    <button class="button-link" id="btn_logout">Salir</button>
+                </div>
+            </div>
+    {% csrf_token %}
+    <div class="list-block" style="height: 412px;">
+      <center>
+        <label>Nombres</label>
+        <input type="text" id="txt_autor_nombre"><br>
+        <label>Apellidos</label>
+        <input type="text" id="txt_autor_apellido"><br>
+        <label>Nacionalidad</label>
+        <select id="slc_nacionalidad"></select><br>
+        <label>Fecha de Nacimiento</label>
+        <input type="text" id="txt_nac_autor"><br>
+        <label>Fecha de Fallecimiento</label>
+        <input type="text" id="txt_fallecimiento_autor"><br>
+        <label>Fecha de Ingreso</label>
+        <input type="text" id="txt_fecha_autor" disabled><br>
+        <a href="/admins/autores/"><button class="square-blue">Regresar</button></a>
+        <button class="square-blue" onclick="AutoresAgregar();">Aceptar</button>
+      </center>
+    </div>
+    <script type="text/javascript" src="{% static 'bin/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admins/agregar_autor.js' %}"></script>
+</body>
+</html>

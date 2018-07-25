@@ -1,0 +1,26 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <script type="text/javascript" src="{% static 'bin/jquery-3.3.1.min.js' %}"></script>
+    </head>
+    <body style="background-image: url({% static 'img/library.jpg' %});">
+        {% csrf_token %}
+        <div class="login-block">
+            <div class="login-block-inner">
+                <h3>INICIAR SESION</h3>
+                <br>
+                <label for="log_correo">Correo</label><br><input type="text" id="log_correo" placeholder="Ingresa tu correo">
+                <br><br>
+                <label for="log_contra">Contraseña</label><br><input type="password" id="log_contra" placeholder="Ingresa tu contraseña">
+                <br><br>
+                <button id="btn_login" class="round-blue" style="width: 202px">INICIAR SESION</button>
+                <br><br>
+                <a href="/user/registro/">No tienes cuenta? Registrate</a>
+                <br>
+                <a href="/admins/registro/">Administradores</a>
+            </div>
+        </div>
+        <script type="text/javascript" src="{% static 'users/login.js' %}"></script>
+    </body>
+</html>

@@ -1,0 +1,129 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <script type="text/javascript" src="{% static 'bin/jquery-3.3.1.min.js' %}"></script>
+    </head>
+    <body style="background-color: rgb(255, 255, 255)">
+        <div class="buttons-nav">
+            <div class="buttons-nav-links">
+                <h2>Portal usuarios</h2>
+            </div>
+        </div>
+        {% csrf_token %}
+        <div class="table-list-head">
+            <div class="table-list-content">
+                <div class="table-list-biblio">Biblioteca</div>
+                <div class="table-list-head-inner">
+                    <button onclick="window.location.href = '/user/libros/'" class="square-white-shad" style="width: 84px;">Libros</button>
+                    <button onclick="window.location.href = '/user/autores/'" class="square-white-shad" style="width: 84px;">Autores</button>
+                    <button onclick="window.location.href = '/user/temas/'" class="square-white-shad" style="width: 84px;">Temas</button>
+                    <button onclick="window.location.href = '/user/prestamos/'" class="square-white-shad" style="width: 84px;">Prestamos</button>
+                    <button onclick="window.location.href = '/user/perfil/'" class="square-blue rad-6" style="width: 84px;">Perfil</button>
+                    <button class="square-blue rad-6 width-84" style="background-color: rgb(223, 67, 67); border-color: rgb(223, 67, 67); width: 84px;">Salir</button>
+                </div>
+            </div>
+        </div>
+                <div class="navbar-inner" style="background-color: transparent; color: black; height: 512px;">
+                    <div class="col-2">
+                        <div>
+                            <label>Nombres</label>
+                            <input type="text" id="txt_nombre" onkeypress="return Validarform(event,0);" placeholder="Ingresa tus nombres">
+                        </div>
+                        <div>
+                            <label>Departamento</label>
+                            <select id="sl_dept">
+                                {% for departamentos in departamentos %}
+                                    <option value="{{ departamentos.id  }}">{{ departamentos.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                            <div>
+                                <label>Apellidos</label>
+                                <input type="text" id="txt_apellido" onkeypress="return Validarform(event,0);" placeholder="Ingresa tus apellidos">
+                            </div>
+                            <div>
+                                <label>Municipio</label>
+                                <select id="sl_muni"></select>
+                            </div>
+                    </div>
+                    <div class="col-2">
+                            <div>
+                                <label>Direccion</label>
+                                <input type="text" id="txt_direccion" placeholder="Ingresa tu direccion">
+                            </div>
+                            <div>
+                                <label>Zona</label>
+                                <input type="text" id="txt_zona" onkeypress="return Validarform(event,1);" maxlength="2" placeholder="Ingresa tu zona">
+                            </div>
+                    </div>
+                    <div class="col-2">
+                            <div>
+                                <label>Telefono</label>
+                                <input type="text" id="txt_tel" onfocusout="Validartelefono(this);" onkeypress="return Validarform(event,1);" maxlength="8" placeholder="Ingresa tu telefono">
+                            </div>
+                            <div>
+                                <label>Institucion</label>
+                                <input type="text" id="txt_edu" placeholder="Ingresa tu institucion educatica">
+                            </div>
+                    </div>
+                    <div class="col-2">
+                            <div>
+                                <label>Correo</label>
+                                <input type="text" id="txt_correo" placeholder="Ingresa tu correo" onfocusout="Validarcorreo();">
+                                <p id="p_correo" style="display: none; font-size: 8pt; ">* El correo solamente puede tener letras, numeros, - y .</p>
+                            </div>
+                            <div>
+                                <label>Escolaridad</label>
+                                <select id="sl_escolaridad">
+                                    <option>Ninguna</option>
+                                    <option>Primaria</option>
+                                    <option>Secundaria</option>
+                                    <option>Diversificado</option>
+                                    <option>Universidad</option>
+                                </select>
+                            </div>
+                    </div>
+                    <div class="col-2">
+                            <div>
+                                <label>Contraseña</label>
+                                <input type="password" id="txt_contra" onfocusout="Validarcontra();" placeholder="Ingresa tu contraseña">
+                                <br>
+                                <label>Confirma</label>
+                                <input type="password" id="txt_concontra" onfocusout="Concontra();" placeholder="Ingresa tu contraseña">
+                                <p id="concontra" style="display: none; font-size: 8pt; ">* La contraseña no coincide</p>
+                                <br>
+                                <label>Genero</label>
+                                <input type="radio" name="rad_genero" checked id="rad_fem"><label for="rad_fem">Femenino</label>
+                                <input type="radio" name="rad_genero" id="rad_mas"><label for="rad_mas">Masculino</label>
+                            </div>
+                            <div>
+                                <br><br>
+                                <div class="col-2">
+                                        <div id="list"><img src="{% static 'img/user-default.png' %}" id="img-perfil" style="border-radius: 50%; width: 72px; height: 72px;"></div>
+                                        <div style="text-align: left;">
+                                            <p id="img_address"></p>
+                                            <input type="file" id="files" name="files[]" value="Examinar" />
+                                        </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-2">
+                            <div>
+                                <label>Fecha de nacimiento</label>
+                                <input type="date" id="txt_fecha" onfocusout="Validarfecha(this);">
+                            </div>
+                            <div>
+                                    <label>CUI</label>
+                                    <input type="text" onkeypress="return Validarform(event,1);" onfocusout="Validarcui();" id="txt_cui" placeholder="Ingresa tu CUI" maxlength="13">
+                                    <p id="p_cui" style="display: none; font-size: 8pt; ">* El CUI es incorrecto.</p>
+                            </div>
+                    </div>
+                    <button class="round-blue margin-24" id="btn_registrar">Editar perfil</button>
+                </div>
+    <script type="text/javascript" src="{% static 'users/perfil.js' %}"></script>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script type="text/javascript" src="{% static 'bin/jquery-3.3.1.min.js' %}"></script>
+</head>
+<body style="background-image: url({% static 'img/library.jpg' %});">
+        <div class="buttons-nav">
+                <div class="buttons-nav-links">
+                    <button onclick="window.location.href = '/admins/libros/'" class="button-link">Libros</button>
+                <button onclick="window.location.href = '/admins/autores/'" class="button-link" >Autores</button>
+                <button onclick="window.location.href = '/admins/temas/'" class="button-link">Temas</button>
+                <button onclick="window.location.href = '/admins/usuarios/'" class="button-link">Usuarios</button>
+                <button onclick="window.location.href = '/admins/bibliotecas/'" class="button-link">Bibliotecas</button>
+                <button onclick="window.location.href = '/admins/prestamos/'" class="button-link">Prestamos</button>
+                    <button class="button-link" id="btn_logout">Salir</button>
+                </div>
+            </div>
+    {% csrf_token %}
+    <div class="list-block" style="height: 312px">
+      <center>
+        <label>Nombre</label>
+        <input type="text" id="txt_nuevo_tema"><br>
+        <label>Descripcion</label>
+        <input type="text" id="txt_descripcion"><br>
+        <label>Ubicacion</label>
+        <input type="text" id="txt_ubicacion"><br>
+        <label>Latitud</label>
+        <input type="text" id="txt_latitud">
+        <label>Longitud</label>
+        <input type="text" id="txt_longitud"><br>
+        <a href="/admins/bibliotecas/"><button class="square-blue">Regresar</button></a>
+        <button class="square-blue" onclick="TemasAgregar();">Aceptar</button>
+      </center>
+    </div>
+    <script type="text/javascript" src="{% static 'admins/agregar_biblioteca.js' %}"></script>
+</body>
+</html>

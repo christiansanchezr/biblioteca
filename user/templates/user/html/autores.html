@@ -1,0 +1,46 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <script type="text/javascript" src="{% static 'bin/jquery-3.3.1.min.js' %}"></script>
+    </head>
+    <body style="background-color: rgb(255, 255, 255)">
+        <div class="buttons-nav">
+            <div class="buttons-nav-links">
+                <h2>Portal usuarios</h2>
+            </div>
+        </div>
+        {% csrf_token %}
+        <div class="table-list-head">
+            <div class="table-list-content">
+                <div class="table-list-biblio">Biblioteca</div>
+                <div class="table-list-head-inner">
+                    <button onclick="window.location.href = '/user/libros/'" class="square-white-shad" style="width: 84px;">Libros</button>
+                    <button onclick="window.location.href = '/user/autores/'" class="square-white-shad" style="width: 84px;">Autores</button>
+                    <button onclick="window.location.href = '/user/temas/'" class="square-white-shad" style="width: 84px;">Temas</button>
+                    <button onclick="window.location.href = '/user/prestamos/'" class="square-white-shad" style="width: 84px;">Prestamos</button>
+                    <button onclick="window.location.href = '/user/perfil/'" class="square-blue rad-6" style="width: 84px;">Perfil</button>
+                    <button class="square-blue rad-6 width-84" style="background-color: rgb(223, 67, 67); border-color: rgb(223, 67, 67); width: 84px;">Salir</button>
+                </div>
+            </div>
+        </div>
+        <div class="table-list">
+            <div class="table-list-search">
+                <p>Buscar por:</p>
+                <select id="slc_buscar">
+                    <option>Nombre</option>
+                    <option>Apellido</option>
+                    <option>Libros</option>
+                </select>
+                <input type="text" id="txt_search">
+                <button class="round-blue" id="btn_buscar" style="height: 38px; top: 50%; margin-top: 9.5px; width: 84px; margin-left: 12px;">Buscar</button>
+            </div>
+            <table id="table-list">
+            </table>
+            <div class="table-list-pages">
+            </div>
+        </div>
+    <script type="text/javascript" src="{% static 'users/autores.js' %}"></script>
+    </body>
+</html>
